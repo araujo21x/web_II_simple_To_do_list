@@ -1,11 +1,11 @@
 const add = () => {
   let cardText = document.querySelector('.input').value
   if (!cardText) alert('Campo não preenchido')
-  else setCards(cardText, respawnCards)
+  else await setCards(cardText, respawnCards)
 }
 
-const respawnCards = () => {
-  let cards = getCards()
+const respawnCards = async () => {
+  let cards = await getCards()
   let ul = document.querySelector('.items')
   document.querySelector('.input').value = ''
   ul.innerHTML = ''

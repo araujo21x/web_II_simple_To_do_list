@@ -1,30 +1,27 @@
-let cards = []
+const URLAPI = 'http://localhost:3000/todo'
 
-const setCards = (cardText) => {
-  cards.push({ cardText, id: generateId(), done: false })
-  respawnCards()
+const setCards = async (cardText) => {
+  await fethRequest(URLAPI, 'POST', { cardText, done: false })
+  await respawnCards()
 }
 
-const getCards = () => {
-  return cards
+const getCards = async () => {
+  const response = await fetch(URLAPI, { method: 'get' })
+  return await response.json()
 }
 
-const remove = (id) => {
-  cards = cards.filter(item => item.id !== id)
-  respawnCards()
+const remove = async (id) => {
+  await fethRequest(URLAPI, 'DELETE', { id })
+  await respawnCards()
 }
 
-const done = (id) => {
-  cards.map(card => {
-    if (card.id == id) card.done = true
-  })
-  respawnCards()
+const done = async (id) => {
+  await fethRequest(URLAPI, 'PUT', { id, done: true })
+  await respawnCards()
 }
 
-const notDone = (id) => {
-  cards.map(card => {
-    if (card.id == id) card.done = false
-  })
-  respawnCards()
+const notDone = async (id) => {
+  await fethRequest(URLAPI, 'PUT', { id, done: false })
+  await respawnCards()
 }
 

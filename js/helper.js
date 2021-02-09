@@ -12,3 +12,16 @@ const generateId = () => {
   else id = (cards[cards.length - 1].id + 1)
   return Number(id)
 }
+
+
+const mainLoaded = async () => {
+  await respawnCards();
+};
+
+const fethRequest = async (url, method, body) => {
+  return await fetch(url, {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  })
+}
