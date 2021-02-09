@@ -13,7 +13,6 @@ const generateId = () => {
   return Number(id)
 }
 
-
 const mainLoaded = async () => {
   await respawnCards();
 };

@@ -1,4 +1,4 @@
-const add = () => {
+const add = async () => {
   let cardText = document.querySelector('.input').value
   if (!cardText) alert('Campo não preenchido')
   else await setCards(cardText, respawnCards)
